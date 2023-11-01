@@ -11,14 +11,15 @@ const useFetch = (endpoint, query) => {
         url: `https://jsearch.p.rapidapi.com/${endpoint}`,
         params: { ...query },
         headers: {
-            'X-RapidAPI-Key': process.env.EXPO_PUBLIC_RAPID_API_KEY,
+            // 'X-RapidAPI-Key': process.env.EXPO_PUBLIC_RAPID_API_KEY,
+            'X-RapidAPI-Key': 'KJwZZIJSFimshuivMSVGaiYzkRomp15f2vKjsnK4bKzuUzVLzA',
             'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
         }
     };
 
     const fetchData = async() => {
         setIsLoading(true);
-
+        console.log('data loaded')
         try {
             const res = await axios.request(options);
             setData(res.data.data);
