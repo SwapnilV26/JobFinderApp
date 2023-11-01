@@ -14,7 +14,7 @@ import { SIZES, icons } from "../../../constants";
 
 const jobTypes = ["Full-time", "Part-time", "Contractor", "Internship"];
 
-const Welcome = () => {
+const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
   const router = useRouter();
   const [activeJob, setActiveJob] = useState("Full-time");
 
@@ -29,13 +29,13 @@ const Welcome = () => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
-            value=""
-            onChange={() => {}}
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
             placeholder="What are you lokking for ?"
           />
         </View>
 
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image
             source={icons.search}
             resizeMode="contain"
@@ -58,8 +58,9 @@ const Welcome = () => {
               <Text style={styles.tabText(activeJob, item)}>{item}</Text>
             </TouchableOpacity>
           )}
-          keyExtractor={item => item}
+          keyExtractor={(item) => item}
           contentContainerStyle={{ columnGap: SIZES.small }}
+          showsHorizontalScrollIndicator={false}
           horizontal
         />
       </View>
